@@ -1,11 +1,11 @@
-# 🛡️ Secure Task Manager (Django)
+# Secure Task Manager 
 
 A secure Django-based task management application developed for the **Security of Web Applications** course.  
 This project demonstrates practical implementations of authentication, authorization, input validation, audit logging, and common web security best practices.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 The goal of this project is to build a **simple but security-focused web application** that satisfies core web application security requirements.
 
@@ -13,9 +13,9 @@ The application allows users to manage personal tasks while strictly enforcing a
 
 ---
 
-## 🔐 1. Authentication (Registration & Login)
+## 1. Authentication (Registration & Login)
 
-### ✔ Registration
+### Registration
 
 - Users can register with a username and password
 - Passwords are **never stored in plaintext**
@@ -28,7 +28,7 @@ The application allows users to manage personal tasks while strictly enforcing a
 
 ---
 
-### ✔ Login
+### Login
 
 - Users can log in with valid credentials
 - Failed login attempts do not leak sensitive information
@@ -40,9 +40,9 @@ The application allows users to manage personal tasks while strictly enforcing a
 
 ---
 
-## 🔑 2. Authorization & Access Control
+## 2. Authorization & Access Control
 
-### ✔ Protected Routes
+### Protected Routes
 
 - Access without login is denied
 - Only authenticated users can access task-related endpoints
@@ -52,14 +52,14 @@ The application allows users to manage personal tasks while strictly enforcing a
 
 ---
 
-### ✔ Role-Based Access
+### Role-Based Access
 
 - Regular users **cannot access** the Django admin panel
 - Only superusers see the **Admin Panel** button in the UI
 
 ---
 
-### ✔ User Data Isolation (CRITICAL)
+### User Data Isolation (CRITICAL)
 
 - User A can create tasks
 - User B **cannot**:
