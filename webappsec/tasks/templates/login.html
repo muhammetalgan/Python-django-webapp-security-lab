@@ -33,6 +33,15 @@
             font-size: 14px;
         }
 
+        .warning {
+            background: #fff7ed;
+            color: #9a3412;
+            padding: 10px;
+            border-left: 4px solid #f97316;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
         label {
             display: block;
             margin-top: 12px;
@@ -83,7 +92,11 @@
 <div class="container">
     <h2>Login</h2>
 
-    {% if form.errors %}
+    {% if request.limited %}
+        <div class="warning">
+            Too many login attempts. Please wait a moment and try again.
+        </div>
+    {% elif form.errors %}
         <div class="error">
             Please enter a correct username and password.
         </div>
