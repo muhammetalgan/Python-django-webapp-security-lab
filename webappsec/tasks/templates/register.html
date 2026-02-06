@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .requirements {
+            background: #f0f7ff;
+            border-left: 4px solid #2b6cb0;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .requirements ul {
+            margin: 5px 0 0 18px;
+        }
+
+        form p {
+            margin-bottom: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #1e4f8a;
+        }
+
+        .errorlist {
+            background: #fdecea;
+            border-left: 4px solid #d93025;
+            padding: 10px;
+            margin-bottom: 12px;
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .errorlist li {
+            color: #b00020;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #2b6cb0;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Create Account</h2>
+
+    <div class="requirements">
+        <strong>Password requirements:</strong>
+        <ul>
+            <li>At least 8 characters</li>
+            <li>Not a common password</li>
+            <li>Not entirely numeric</li>
+            <li>Not similar to username</li>
+        </ul>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="back-link">
+        <a href="/login/">← Back to login</a>
+    </div>
+
+</div>
+
+</body>
+</html>

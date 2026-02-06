@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Tasks</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .container {
+            width: 700px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f7ff;
+        }
+
+        .empty {
+            text-align: center;
+            color: #666;
+            padding: 15px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-actions a,
+        .right-actions button {
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .add {
+            background: #2b6cb0;
+            color: white;
+        }
+
+        .add:hover {
+            background: #1e4f8a;
+        }
+
+        .admin {
+            background: #38a169;
+            color: white;
+        }
+
+        .admin:hover {
+            background: #2f855a;
+        }
+
+        .logout {
+            background: #e53e3e;
+            color: white;
+            border: none;
+        }
+
+        .logout:hover {
+            background: #c53030;
+        }
+
+        .delete {
+            color: #e53e3e;
+            text-decoration: none;
+        }
+
+        .delete:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Your Tasks</h2>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>
+                <a class="delete" href="/delete/{{ task.id }}/">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2" class="empty">No tasks found</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="actions">
+
+        <div class="left-actions">
+            <a class="add" href="/add/">+ Add task</a>
+
+            {% if request.user.is_superuser %}
+                <a class="admin" href="/admin/">Admin panel</a>
+            {% endif %}
+        </div>
+
+        <div class="right-actions">
+            <form method="post" action="/logout/" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="logout">Logout</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
